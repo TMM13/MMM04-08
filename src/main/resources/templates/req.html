@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th = "http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="navhead.html">
+    <div layout:fragment="siteContent" th:each="call : ${calls}">
+        <div class="border border-success p-2 mt-3">
+            <p>
+                <span style="color:red;" th:text="${call.isHandled()==false?'***Новая***':''}"></span>
+                 Заявка от <span class="bold" th:text="${call.username}"></span>
+            </p>
+            <p style="color: lightgray" class="fs-6" >Курс: <span class="bold" th:text="${call.coursename}"></span></p>
+            <p class="fs-6" th:text="${call.commentary}"></p>
+            <p class="fs-6">Тел: <span th:text="${call.phone}"></span> <a th:href="@{'/details/' + ${call.id}}">Подробнее</a></p>
+        </div>
+    </div>
+</html>
